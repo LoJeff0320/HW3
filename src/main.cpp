@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
 
 using namespace std;
 
@@ -35,7 +36,16 @@ class Enrollment{
 };
 
 int main(){
-    cout << "Hello World!" << endl; 
-    Enrollment enroll;
-    ifstream myfile();
+	cout << "Hello World!" << endl; 
+    	Enrollment enroll;
+    	ifstream myfile("../data.csv");
+
+	vector<string> names;
+
+    	string input;
+    	while(myfile >> input){
+		names.push_back(input);	    
+    	}
+
+	cout << names.at(0) << endl;
 }
