@@ -1,4 +1,6 @@
 #include <iostream>
+#include <fstream>
+
 using namespace std;
 
 struct Student{
@@ -35,4 +37,5 @@ class Enrollment{
 int main(){
     cout << "Hello World!" << endl; 
     Enrollment enroll;
+    ifstream myfile();
 }
