@@ -4,18 +4,6 @@
 
 using namespace std;
 
-struct Student{
-	string ID;
-	//Course course;
-	string grade;
-};
-
-struct Instructor{
-	string ID;
-	//Course course;
-	string term;
-};
-
 struct Term{
 	string ID;
 	string displayName;
@@ -28,6 +16,18 @@ struct Course{
 	Term term;
 };
 
+struct Student{
+	string ID;
+	Course course;
+	string grade;
+};
+
+struct Instructor{
+	string ID;
+	Course course;
+	string term;
+};
+
 class Enrollment{
 	public:
 	Enrollment(){
@@ -36,16 +36,14 @@ class Enrollment{
 };
 
 int main(){
-	cout << "Hello World!" << endl; 
-    	Enrollment enroll;
-    	ifstream myfile("../data.csv");
+    Enrollment enroll;
+    ifstream myfile("../Desktop/homework/HW3/data/data.csv");
 
-	vector<string> names;
+	string line;
 
-    	string input;
-    	while(myfile >> input){
-		names.push_back(input);	    
-    	}
+    while (getline (myfile,line)){
+    	cout << line << '\n';
+    }
+    myfile.close();
 
-	cout << names.at(0) << endl;
 }
