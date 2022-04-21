@@ -37,13 +37,15 @@ class Enrollment{
 
 int main(){
     Enrollment enroll;
-    ifstream myfile("../Desktop/homework/HW3/data/data.csv");
+    fstream myfile;
+	myfile.open("C:\\Users\\jeffrey\\Desktop\\homework\\HW3\\data\\data.csv", ios::in);
 
-	string line;
+	if(myfile.is_open()){
+		string line;
 
-    while (getline (myfile,line)){
-    	cout << line << '\n';
-    }
+    	while (getline (myfile, line)){
+    		cout << line << '\n';
+    	}
+	}
     myfile.close();
-
 }
