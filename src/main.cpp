@@ -36,16 +36,22 @@ class Enrollment{
 };
 
 int main(){
-    Enrollment enroll;
+    Enrollment enroll[6];
     fstream myfile;
 	myfile.open("C:\\Users\\jeffrey\\Desktop\\homework\\HW3\\data\\data.csv", ios::in);
 
+	vector<string> tokens;
+
 	if(myfile.is_open()){
 		string line;
-
-    	while (getline (myfile, line)){
-    		cout << line << '\n';
+		
+    	while (getline (myfile, line, ',')){
+    		tokens.push_back(line);
     	}
 	}
+
+	for(int i = 0; i < tokens.size(); i++) {
+      cout << tokens[i] << endl;
+   	}
     myfile.close();
 }
