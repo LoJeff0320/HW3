@@ -7,6 +7,11 @@ using namespace std;
 struct Term{
 	string ID;
 	string displayName;
+
+	Term(string ID){
+		this->ID = ID;
+		//this->displayName = displayName;
+	}
 };
 
 struct Course{
@@ -14,6 +19,13 @@ struct Course{
 	string courseNum;
 	string sectionCode;
 	Term term;
+
+	Course(string ID, string courseNum, string sectionCode, Term term){
+		this->ID = ID;
+		this->courseNum = courseNum;
+		this->sectionCode = sectionCode;
+		this->term = term;	
+	}
 };
 
 struct Student{
@@ -21,15 +33,23 @@ struct Student{
 	Course course;
 	string grade;
 
-	Student(){
-		
+	Student(string ID, Course course, string grade){
+		this->ID = ID;
+		this->course = course;
+		this->grade = grade;
 	}
 };
 
 struct Instructor{
 	string ID;
 	Course course;
-	string term;
+	Term term;
+
+	Instructor(string ID, Course course, Term term){
+		this->ID = ID;
+		this->course = course;
+		this->term = term;
+	}
 };
 
 class Enrollment{
@@ -37,10 +57,10 @@ class Enrollment{
 
 	public:
 	Enrollment(){
-		studentVec {};
+		{ }
 	}
 
-	void enroll(Student student){
+	void enrollStudent(Student student){
 		studentVec.push_back(student);
 	}
 };
@@ -61,8 +81,13 @@ int main(){
     		tokens.push_back(line);
     	}
 	}else cout << "File cant be found." << endl;
+	
+	// create obejcts for course and student
+	Term term {tokens[3]};
+	Course course {tokens[0], tokens[1], tokens[4], term};
+	Student stu {tokens[0], course, tokens[5]};
 
-	Student student{tokens[0]};
+	enroll.enrollStudent(stu);
 
 	//iterating through tokens vector
 	for(int i = 0; i < tokens.size(); i++) {
